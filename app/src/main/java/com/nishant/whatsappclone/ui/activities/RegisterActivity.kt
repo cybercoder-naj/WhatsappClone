@@ -1,5 +1,6 @@
 package com.nishant.whatsappclone.ui.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -10,7 +11,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.utils.toast
 import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.layout_action_bar.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -21,12 +21,6 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        setSupportActionBar(toolbar)
-        supportActionBar?.apply {
-            title = resources.getString(R.string.login)
-            setDisplayHomeAsUpEnabled(true)
-        }
-
         auth = FirebaseAuth.getInstance()
 
         button_register.setOnClickListener {
@@ -35,7 +29,8 @@ class RegisterActivity : AppCompatActivity() {
             val password = edit_text_password.text.toString()
 
             if (TextUtils.isEmpty(username) || TextUtils.isEmpty(email)
-                || TextUtils.isEmpty(password))
+                || TextUtils.isEmpty(password)
+            )
                 toast("All fields are required!")
             else if (password.length < 8)
                 toast("Password be must at least 8 characters.")
@@ -73,5 +68,10 @@ class RegisterActivity : AppCompatActivity() {
                 } else
                     toast("You cannot register with this email and password.")
             }
+    }
+
+
+    companion object {
+        fun getIntent(context: Context) = Intent(context, RegisterActivity::class.java)
     }
 }

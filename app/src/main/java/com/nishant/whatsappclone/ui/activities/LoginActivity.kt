@@ -1,5 +1,6 @@
 package com.nishant.whatsappclone.ui.activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -8,7 +9,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.utils.toast
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.layout_action_bar.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -46,5 +46,9 @@ class LoginActivity : AppCompatActivity() {
                     }
             }
         }
+    }
+
+    companion object {
+        fun getIntent(context: Context) = Intent(context, LoginActivity::class.java)
     }
 }

@@ -1,6 +1,6 @@
 /build
 /libs
 /src/androidTest
-/test
+test
 google-services.json
-progaurd-rules.pro
+proguard-rules.pro

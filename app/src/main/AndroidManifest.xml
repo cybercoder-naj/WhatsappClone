@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.LoginActivity"></activity>
         <activity android:name=".ui.activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,9 +17,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.RegisterActivity">
+        <activity
+            android:name=".ui.activities.RegisterActivity"
+            android:parentActivityName=".ui.activities.StartActivity">
             <intent-filter>
                 <action android:name=".ui.activities.RegisterAcitivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activities.LoginActivity"
+            android:parentActivityName=".ui.activities.StartActivity">
+            <intent-filter>
+                <action android:name=".ui.activities.LoginActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activities.MainActivity">
+            <intent-filter>
+                <action android:name=".ui.activities.MainActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

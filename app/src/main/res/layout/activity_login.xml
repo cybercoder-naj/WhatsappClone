@@ -6,9 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.LoginActivity">
 
-    <include
-        android:id="@+id/layout_toolbar"
-        layout="@layout/layout_action_bar" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Login"
+        app:titleTextColor="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +25,7 @@
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,8 +61,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimaryDark"
             android:text="@string/login"
-            android:textColor="@android:color/white"
-            />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

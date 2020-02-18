@@ -6,21 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".ui.activities.RegisterActivity">
 
-    <include
-        android:id="@+id/layout_toolbar"
-        layout="@layout/layout_action_bar" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Register"
+        app:titleTextColor="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/linear_layout_border"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="16dp"
-        android:background="@drawable/linear_layout_border"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,38 +40,37 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="@string/username"
-            app:met_underlineColor="@color/colorAccent"
-            app:met_floatingLabel="normal" />
+            app:met_floatingLabel="normal"
+            app:met_underlineColor="@color/colorAccent" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edit_text_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:inputType="textEmailAddress"
             android:hint="@string/email"
+            android:inputType="textEmailAddress"
             app:met_floatingLabel="normal"
-            app:met_underlineColor="@color/colorAccent"/>
+            app:met_underlineColor="@color/colorAccent" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edit_text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:inputType="textPassword"
             android:hint="@string/password"
+            android:inputType="textPassword"
             app:met_floatingLabel="normal"
-            app:met_underlineColor="@color/colorAccent"/>
+            app:met_underlineColor="@color/colorAccent" />
 
         <Button
             android:id="@+id/button_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/register"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@android:color/white"
             android:layout_marginTop="10dp"
-            />
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/register"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
