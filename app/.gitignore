@@ -1,0 +1,6 @@
+/build
+/libs
+/src/androidTest
+/test
+google-services.json
+progaurd-rules.pro
