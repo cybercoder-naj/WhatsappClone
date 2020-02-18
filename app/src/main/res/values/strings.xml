@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WhatsappClone</string>
+    <string name="username">Username</string>
+    <string name="create_a_new_account">Create a new account!</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="avatar">avatar</string>
+</resources>
