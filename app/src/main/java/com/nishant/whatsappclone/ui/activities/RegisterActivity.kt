@@ -5,12 +5,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.utils.toast
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_register.toolbar
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -22,6 +25,12 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         auth = FirebaseAuth.getInstance()
+
+        setSupportActionBar(toolbar as Toolbar?)
+        supportActionBar?.apply {
+            title = resources.getString(R.string.login)
+            setDisplayHomeAsUpEnabled(true)
+        }
 
         button_register.setOnClickListener {
             val username = edit_text_username.text.toString()

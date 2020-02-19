@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.utils.toast
@@ -18,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar as Toolbar?)
         supportActionBar?.apply {
             title = resources.getString(R.string.login)
             setDisplayHomeAsUpEnabled(true)

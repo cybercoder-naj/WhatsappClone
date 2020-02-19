@@ -1,11 +1,32 @@
 package com.nishant.whatsappclone.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.nishant.whatsappclone.R
 import kotlinx.android.synthetic.main.activity_start.*
 
 class StartActivity : AppCompatActivity() {
+
+    private var firebaseUser: FirebaseUser? = null
+
+    companion object {
+        fun getIntent(context: Context) = Intent(context, StartActivity::class.java)
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        firebaseUser = FirebaseAuth.getInstance().currentUser
+
+        if (firebaseUser != null) {
+            startActivity(MainActivity.getIntent(this))
+            finish()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
