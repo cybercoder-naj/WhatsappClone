@@ -6,16 +6,16 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.nishant.whatsappclone.R
+import com.nishant.whatsappclone.adapters.ViewPagerAdapter
 import com.nishant.whatsappclone.models.User
+import com.nishant.whatsappclone.ui.fragments.ChatsFragment
+import com.nishant.whatsappclone.ui.fragments.UsersFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.activity_register.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +51,15 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+
+        val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager).apply {
+            addFragment(ChatsFragment.newInstance(), ChatsFragment.TITLE)
+            addFragment(UsersFragment.newInstance(), UsersFragment.TITLE)
+        }
+
+        view_pager.adapter = viewPagerAdapter
+
+        tab_layout.setupWithViewPager(view_pager)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -59,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.menu_item_logout -> {
                 FirebaseAuth.getInstance().signOut()
                 startActivity(StartActivity.getIntent(this))

@@ -7,7 +7,7 @@ I am learning how to make a simple chat app using Firebase.
  - [x] Setup
  - [x] Authentication with email and password
  - [x] User Information, Auto-Login and Logout
- - [ ] TabLayout and ViewPager
+ - [x] TabLayout and ViewPager
  - [ ] Display Users
  - [ ] Chatting
  - [ ] Sending and displaying messages
@@ -28,3 +28,24 @@ The code for creating a new user and signing in an existing user has also been a
 	Added the User information class - User.kt. It stores the Unique ID stored in Firebase along with the Username and image url. Added Auto login and log out.
 	Added the Checklist heading in README.
 
+ - Day 2 (20/02/2020)
+ 
+    - "Day 2 Commit #1"
+    I have added content to *activity_main.xml* - TabLayout, ViewPager with 2 Fragments, namely ChatsFragment and UsersFragment.
+    I learnt new the new way of inflating the layout in Fragments. 
+    Instead of:
+	```kotlin
+	class ChatsFragment : Fragment() {
+		override fun onCreateView(
+			inflater: LayoutInflater,
+			container: ViewGroup?,
+			savedInstanceBundle: Bundle?
+		): View? =
+			inflater.inflate(R.layout.fragment_chats, container, false)
+	}
+	```
+    We use,
+    ```kotlin
+    class ChatsFragment : Fragment(R.layout.fragment_chats)
+    ```
+    This makes the code for fragment classes more readable as the constructor internally does the job of onCreateView
