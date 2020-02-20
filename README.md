@@ -18,19 +18,23 @@ I am learning how to make a simple chat app using Firebase.
  - [ ] Sending Notifications
 
 ## Log  
- - Day 1 (19/02/2020)  
-  
-	 - "Day 1 Commit" and "Day 1 Commit #2"  
-	I started this project yesterday. I have made the layout for the launcher screen, registration screen and login screen.  
-The code for creating a new user and signing in an existing user has also been added.
 
-	- "Day 1 Commit #3"
+### Day 1 (19/02/2020)
+
+- **"Day 1 Commit"** and **"Day 1 Commit #2"**  
+    
+    I started this project yesterday. I have made the layout for the launcher screen, registration screen and login screen.  
+    The code for creating a new user and signing in an existing user has also been added.
+
+- **"Day 1 Commit #3"**
+	
 	Added the User information class - User.kt. It stores the Unique ID stored in Firebase along with the Username and image url. Added Auto login and log out.
 	Added the Checklist heading in README.
 
- - Day 2 (20/02/2020)
+### Day 2 (20/02/2020)
  
-    - "Day 2 Commit #1"
+- **"Day 2 Commit #1"**
+    
     I have added content to *activity_main.xml* - TabLayout, ViewPager with 2 Fragments, namely ChatsFragment and UsersFragment.
     I learnt new the new way of inflating the layout in Fragments. 
     Instead of:
@@ -50,5 +54,6 @@ The code for creating a new user and signing in an existing user has also been a
     ```
     This makes the code for fragment classes more readable as the constructor internally does the job of onCreateView
     
-    - "Day 2 Commit #2"
+- **"Day 2 Commit #2"** and **Day 2 Commit #3**
+    
     I have added the total number of users available on the firebase project server in the UsersFragment.
