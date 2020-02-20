@@ -8,7 +8,7 @@ I am learning how to make a simple chat app using Firebase.
  - [x] Authentication with email and password
  - [x] User Information, Auto-Login and Logout
  - [x] TabLayout and ViewPager
- - [ ] Display Users
+ - [x] Display Users
  - [ ] Chatting
  - [ ] Sending and displaying messages
  - [ ] User profile, changing display photo
@@ -49,3 +49,6 @@ The code for creating a new user and signing in an existing user has also been a
     class ChatsFragment : Fragment(R.layout.fragment_chats)
     ```
     This makes the code for fragment classes more readable as the constructor internally does the job of onCreateView
+    
+    - "Day 2 Commit #2"
+    I have added the total number of users available on the firebase project server in the UsersFragment.
