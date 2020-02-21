@@ -9,7 +9,7 @@ I am learning how to make a simple chat app using Firebase.
  - [x] User Information, Auto-Login and Logout
  - [x] TabLayout and ViewPager
  - [x] Display Users
- - [ ] Chatting
+ - [x] Setup Chat Activity
  - [ ] Sending and displaying messages
  - [ ] User profile, changing display photo
  - [ ] User activity status
@@ -57,3 +57,17 @@ I am learning how to make a simple chat app using Firebase.
 - **"Day 2 Commit #2"** and **Day 2 Commit #3**
     
     I have added the total number of users available on the firebase project server in the UsersFragment.
+    
+### Day 3 (22/02/2020)
+
+- **"Day 3 Commit #1"**
+
+    I have added the *MessageActivity.kt*. I learnt how to use scope functions efficiently.
+    ```kotlin
+    context.startActivity(
+        MessageActivity.getIntent(context).apply {
+            putExtra(context.resources.getStringExtra(R.string.intent_key_userid), user.id)
+        }
+    )
+    ```
+    

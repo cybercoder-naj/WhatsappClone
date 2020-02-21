@@ -1,6 +1,7 @@
 package com.nishant.whatsappclone.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.models.User
+import com.nishant.whatsappclone.ui.activities.MessageActivity
 import kotlinx.android.synthetic.main.card_view_user_item.view.*
 
 class UserAdapter(private val context: Context, private val users: List<User>) :
@@ -36,7 +38,13 @@ class UserAdapter(private val context: Context, private val users: List<User>) :
             else
                 Glide.with(context).load(user.imageUrl).into(itemView.display_photo)
 
-
+            itemView.setOnClickListener {
+                context.startActivity(
+                    MessageActivity.getIntent(context).apply {
+                        putExtra(context.resources.getString(R.string.intent_key_userid), user.id)
+                    }
+                )
+            }
         }
     }
 }
