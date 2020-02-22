@@ -1,6 +1,6 @@
 package com.nishant.whatsappclone.models
 
-data class User(var id: String, var username: String, var imageURL: String) {
+data class Chat(var sender: String, var receiver: String, var message: String) {
 
     constructor() : this("", "", "")
 }

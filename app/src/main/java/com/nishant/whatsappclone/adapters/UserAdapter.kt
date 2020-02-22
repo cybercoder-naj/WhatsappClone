@@ -1,7 +1,6 @@
 package com.nishant.whatsappclone.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,10 +32,10 @@ class UserAdapter(private val context: Context, private val users: List<User>) :
 
         fun bindData(user: User) {
             itemView.username.text = user.username
-            if (user.imageUrl == "default")
-                itemView.display_photo.setImageResource(R.mipmap.ic_launcher)
+            if (user.imageURL == "default")
+                itemView.display_photo.setImageResource(R.drawable.default_profile)
             else
-                Glide.with(context).load(user.imageUrl).into(itemView.display_photo)
+                Glide.with(context).load(user.imageURL).into(itemView.display_photo)
 
             itemView.setOnClickListener {
                 context.startActivity(

@@ -11,13 +11,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.nishant.whatsappclone.R
-import com.nishant.whatsappclone.adapters.UserAdapter
 import com.nishant.whatsappclone.adapters.ViewPagerAdapter
 import com.nishant.whatsappclone.models.User
 import com.nishant.whatsappclone.ui.fragments.ChatsFragment
 import com.nishant.whatsappclone.ui.fragments.UsersFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_users.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,10 +39,10 @@ class MainActivity : AppCompatActivity() {
                 val user = dataSnapshot.getValue(User::class.java)
                 user?.let {
                     toolbar_username.text = it.username
-                    if (it.imageUrl == "default")
-                        image_profile.setImageResource(R.drawable.ic_launcher_background)
+                    if (it.imageURL == "default")
+                        image_profile.setImageResource(R.drawable.default_profile)
                     else
-                        Glide.with(this@MainActivity).load(it.imageUrl).into(image_profile)
+                        Glide.with(this@MainActivity).load(it.imageURL).into(image_profile)
                 }
             }
 

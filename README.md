@@ -10,7 +10,7 @@ I am learning how to make a simple chat app using Firebase.
  - [x] TabLayout and ViewPager
  - [x] Display Users
  - [x] Setup Chat Activity
- - [ ] Sending and displaying messages
+ - [x] Sending and displaying messages
  - [ ] User profile, changing display photo
  - [ ] User activity status
  - [ ] Read receipts
@@ -71,3 +71,6 @@ I am learning how to make a simple chat app using Firebase.
     )
     ```
     
+- **Day 3 Commit #2**
+
+    Created items for texting and setup RecyclerView for displaying chats.
