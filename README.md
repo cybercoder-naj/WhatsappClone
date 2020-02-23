@@ -74,3 +74,9 @@ I am learning how to make a simple chat app using Firebase.
 - **Day 3 Commit #2**
 
     Created items for texting and setup RecyclerView for displaying chats.
+
+### Day 4 (23/02/2020)
+
+- **"Day 4 Commit #1"**
+
+	Not many changes today. I have added the code to ChatsFragment.kt so display the users you've had chats with.

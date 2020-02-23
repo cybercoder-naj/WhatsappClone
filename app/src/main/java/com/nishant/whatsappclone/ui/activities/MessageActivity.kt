@@ -38,7 +38,7 @@ class MessageActivity : AppCompatActivity() {
         }
         toolbar.setNavigationOnClickListener { finish() }
 
-        recycler_view_chats.apply {
+        recycler_view_messages.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context).apply {
                 stackFromEnd = true
@@ -106,7 +106,7 @@ class MessageActivity : AppCompatActivity() {
                             chats.add(chat)
                     }
 
-                    recycler_view_chats.adapter =
+                    recycler_view_messages.adapter =
                         MessageAdapter(this@MessageActivity, chats, imageURL)
                 }
             }

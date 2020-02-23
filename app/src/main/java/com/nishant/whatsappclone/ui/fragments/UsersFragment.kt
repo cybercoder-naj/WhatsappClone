@@ -53,7 +53,7 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
 
         })
