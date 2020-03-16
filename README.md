@@ -11,7 +11,7 @@ I am learning how to make a simple chat app using Firebase.
  - [x] Display Users
  - [x] Setup Chat Activity
  - [x] Sending and displaying messages
- - [ ] User profile, changing display photo
+ - [x] User profile, changing display photo
  - [ ] User activity status
  - [ ] Read receipts
  - [ ] Forget password
@@ -85,8 +85,12 @@ I am learning how to make a simple chat app using Firebase.
 
 - **"Day 5 Commit #1"**
 
-    I've returned back after a long time. I couldn't program because of my `$11^{th}$` standard annual examinations.
+    I've returned back after a long time. I couldn't program because of my 11th standard annual examinations.
     Today I've added ViewBinding to all my Activities to ensure null and type safety. Although, I am not sure how
     I am gonna set my SupportActionBar with View Binding, so I'm still using Kotlin synthetics for that code only.
     I've added the profile tab in the app in which you can view your profile picture and username. You can now also
     change the profile picture from the image selected from your phone.
+    
+- **"Day 5 Commit #2"**
+
+    Updated README.md
