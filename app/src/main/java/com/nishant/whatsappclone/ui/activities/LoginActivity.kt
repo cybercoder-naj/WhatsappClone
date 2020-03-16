@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.nishant.whatsappclone.R
+import com.nishant.whatsappclone.databinding.ActivityLoginBinding
 import com.nishant.whatsappclone.utils.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -17,7 +18,8 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        val binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setSupportActionBar(toolbar as Toolbar?)
         supportActionBar?.apply {
@@ -27,9 +29,9 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        button_login.setOnClickListener {
-            val email = edit_text_login_email.text.toString()
-            val password = edit_text_login_password.text.toString()
+        binding.buttonLogin.setOnClickListener {
+            val email = binding.editTextLoginEmail.text.toString()
+            val password = binding.editTextLoginPassword.text.toString()
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password))
                 toast("All fields are required.")
@@ -37,9 +39,11 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
-                            val intent = MainActivity.getIntent(this)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            startActivity(intent)
+                            startActivity(
+                                MainActivity.getIntent(this).apply {
+                                    flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                }
+                            )
                             finish()
                         }
                         else

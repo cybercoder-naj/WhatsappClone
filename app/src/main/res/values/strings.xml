@@ -12,5 +12,6 @@
     <string name="profile_picture">Profile Picture</string>
 
     <string name="intent_key_userid">UserId</string>
-    <string name="type_a_message">Type a message...</string>
+    <string name="type_a_message">Type a message&#8230;</string>
+    <string name="profile">Profile</string>
 </resources>

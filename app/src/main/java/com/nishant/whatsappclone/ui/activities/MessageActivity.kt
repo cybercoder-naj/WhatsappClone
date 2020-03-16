@@ -11,17 +11,16 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.adapters.MessageAdapter
+import com.nishant.whatsappclone.databinding.ActivityMessageBinding
 import com.nishant.whatsappclone.models.Chat
 import com.nishant.whatsappclone.models.User
-import kotlinx.android.synthetic.main.activity_main.image_profile
-import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.activity_main.toolbar_username
-import kotlinx.android.synthetic.main.activity_message.*
+import kotlinx.android.synthetic.main.activity_message.toolbar
 
 class MessageActivity : AppCompatActivity() {
 
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var reference: DatabaseReference
+    private lateinit var binding: ActivityMessageBinding
 
     companion object {
         fun getIntent(context: Context) = Intent(context, MessageActivity::class.java)
@@ -29,7 +28,8 @@ class MessageActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_message)
+        binding = ActivityMessageBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setSupportActionBar(toolbar)
         supportActionBar?.apply {
@@ -38,7 +38,7 @@ class MessageActivity : AppCompatActivity() {
         }
         toolbar.setNavigationOnClickListener { finish() }
 
-        recycler_view_messages.apply {
+        binding.recyclerViewMessages.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context).apply {
                 stackFromEnd = true
@@ -50,22 +50,22 @@ class MessageActivity : AppCompatActivity() {
         reference = FirebaseDatabase.getInstance().getReference("Users")
             .child(userId)
 
-        btn_send.setOnClickListener {
-            val message = text_send.text.toString()
+        binding.btnSend.setOnClickListener {
+            val message = binding.textSend.text.toString()
             if (message != "")
                 sendMessage(firebaseUser.uid, userId, message)
-            text_send.setText("")
+            binding.textSend.setText("")
         }
 
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue(User::class.java)
                 user?.let {
-                    toolbar_username.text = it.username
+                    binding.toolbarUsername.text = it.username
                     if (it.imageURL == "default")
-                        image_profile.setImageResource(R.drawable.default_profile)
+                        binding.imageProfile.setImageResource(R.drawable.default_profile)
                     else
-                        Glide.with(this@MessageActivity).load(it.imageURL).into(image_profile)
+                        Glide.with(this@MessageActivity).load(it.imageURL).into(binding.imageProfile)
                 }
 
                 readMessage(firebaseUser.uid, userId, user?.imageURL ?: "default")
@@ -106,7 +106,7 @@ class MessageActivity : AppCompatActivity() {
                             chats.add(chat)
                     }
 
-                    recycler_view_messages.adapter =
+                    binding.recyclerViewMessages.adapter =
                         MessageAdapter(this@MessageActivity, chats, imageURL)
                 }
             }

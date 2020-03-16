@@ -9,14 +9,15 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.adapters.UserAdapter
+import com.nishant.whatsappclone.databinding.FragmentChatsBinding
 import com.nishant.whatsappclone.models.Chat
 import com.nishant.whatsappclone.models.User
-import kotlinx.android.synthetic.main.fragment_chats.*
 
 class ChatsFragment : Fragment(R.layout.fragment_chats) {
 
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var reference: DatabaseReference
+    private lateinit var binding: FragmentChatsBinding
 
     companion object {
         const val TAG = "ChatsFragment"
@@ -26,10 +27,12 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recycler_view_chats.apply {
+        binding = FragmentChatsBinding.inflate(layoutInflater)
+        binding.recyclerViewChats.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
         }
+
 
         firebaseUser = FirebaseAuth.getInstance().currentUser!!
         reference = FirebaseDatabase.getInstance().getReference("Chats")
@@ -86,7 +89,7 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
                     }
                 }
 
-                recycler_view_chats.adapter = UserAdapter(context!!, users)
+                binding.recyclerViewChats.adapter = UserAdapter(context!!, users)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

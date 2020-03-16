@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.models.Chat
-import kotlinx.android.synthetic.main.cardview_chat_item_left.view.*
 
 class MessageAdapter(
     private val context: Context,
@@ -47,7 +46,8 @@ class MessageAdapter(
             LayoutInflater.from(context).inflate(
                 if (viewType == MESSAGE_TYPE_RIGHT)
                     R.layout.cardview_chat_item_right
-                else R.layout.cardview_chat_item_left,
+                else
+                    R.layout.cardview_chat_item_left,
                 parent,
                 false
             )

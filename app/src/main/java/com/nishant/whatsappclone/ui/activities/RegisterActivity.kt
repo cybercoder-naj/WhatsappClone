@@ -10,9 +10,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.nishant.whatsappclone.R
+import com.nishant.whatsappclone.databinding.ActivityRegisterBinding
 import com.nishant.whatsappclone.utils.toast
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_register.toolbar
 
 class RegisterActivity : AppCompatActivity() {
@@ -22,7 +21,9 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+
+        val binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
 
@@ -32,10 +33,10 @@ class RegisterActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
         }
 
-        button_register.setOnClickListener {
-            val username = edit_text_username.text.toString()
-            val email = edit_text_email.text.toString()
-            val password = edit_text_password.text.toString()
+        binding.buttonRegister.setOnClickListener {
+            val username = binding.editTextUsername.text.toString()
+            val email = binding.editTextEmail.text.toString()
+            val password = binding.editTextPassword.text.toString()
 
             if (TextUtils.isEmpty(username) || TextUtils.isEmpty(email)
                 || TextUtils.isEmpty(password)
@@ -68,9 +69,12 @@ class RegisterActivity : AppCompatActivity() {
 
                     reference.setValue(hashMap).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            val intent = MainActivity.getIntent(this)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            startActivity(intent)
+                            startActivity(
+                                MainActivity.getIntent(this).apply {
+                                    flags =
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                }
+                            )
                             finish()
                         }
                     }

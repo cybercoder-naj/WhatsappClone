@@ -6,8 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.nishant.whatsappclone.R
-import kotlinx.android.synthetic.main.activity_start.*
+import com.nishant.whatsappclone.databinding.ActivityStartBinding
 
 class StartActivity : AppCompatActivity() {
 
@@ -30,15 +29,16 @@ class StartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_start)
+        val binding = ActivityStartBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        button_start_login.setOnClickListener {
+        binding.buttonStartLogin.setOnClickListener {
             startActivity(
                 LoginActivity.getIntent(this)
             )
         }
 
-        button_start_register.setOnClickListener {
+        binding.buttonStartRegister.setOnClickListener {
             startActivity(
                 RegisterActivity.getIntent(this)
             )

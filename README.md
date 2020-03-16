@@ -80,3 +80,13 @@ I am learning how to make a simple chat app using Firebase.
 - **"Day 4 Commit #1"**
 
 	Not many changes today. I have added the code to ChatsFragment.kt so display the users you've had chats with.
+	
+### Day 5 (16/03/2020)
+
+- **"Day 5 Commit #1"**
+
+    I've returned back after a long time. I couldn't program because of my `$11^{th}$` standard annual examinations.
+    Today I've added ViewBinding to all my Activities to ensure null and type safety. Although, I am not sure how
+    I am gonna set my SupportActionBar with View Binding, so I'm still using Kotlin synthetics for that code only.
+    I've added the profile tab in the app in which you can view your profile picture and username. You can now also
+    change the profile picture from the image selected from your phone.

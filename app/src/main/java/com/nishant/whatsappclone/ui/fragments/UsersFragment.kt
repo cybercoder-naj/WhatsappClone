@@ -12,13 +12,13 @@ import com.google.firebase.database.ValueEventListener
 
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.adapters.UserAdapter
+import com.nishant.whatsappclone.databinding.FragmentUsersBinding
 import com.nishant.whatsappclone.models.User
-import kotlinx.android.synthetic.main.fragment_users.*
 
 class UsersFragment : Fragment(R.layout.fragment_users) {
 
     private val users = ArrayList<User>()
-
+    private lateinit var binding: FragmentUsersBinding
     companion object {
         const val TAG = "UsersFragment"
         const val TITLE = "Users"
@@ -27,7 +27,8 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recycler_view_users.apply {
+        binding = FragmentUsersBinding.inflate(layoutInflater)
+        binding.recyclerViewUsers.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
         }
@@ -48,7 +49,7 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
                     if (user.id != firebaseUser.uid)
                         users.add(user)
 
-                    recycler_view_users.adapter = UserAdapter(context!!, users)
+                    binding.recyclerViewUsers.adapter = UserAdapter(context!!, users)
                 }
             }
 

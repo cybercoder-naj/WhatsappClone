@@ -12,10 +12,11 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.adapters.ViewPagerAdapter
+import com.nishant.whatsappclone.databinding.ActivityMainBinding
 import com.nishant.whatsappclone.models.User
 import com.nishant.whatsappclone.ui.fragments.ChatsFragment
+import com.nishant.whatsappclone.ui.fragments.ProfileFragment
 import com.nishant.whatsappclone.ui.fragments.UsersFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,9 +25,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        setSupportActionBar(toolbar)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.apply {
             title = ""
         }
@@ -38,11 +41,11 @@ class MainActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user = dataSnapshot.getValue(User::class.java)
                 user?.let {
-                    toolbar_username.text = it.username
+                    binding.toolbarUsername.text = it.username
                     if (it.imageURL == "default")
-                        image_profile.setImageResource(R.drawable.default_profile)
+                        binding.imageProfile.setImageResource(R.drawable.default_profile)
                     else
-                        Glide.with(this@MainActivity).load(it.imageURL).into(image_profile)
+                        Glide.with(this@MainActivity).load(it.imageURL).into(binding.imageProfile)
                 }
             }
 
@@ -55,11 +58,12 @@ class MainActivity : AppCompatActivity() {
         val viewPagerAdapter = ViewPagerAdapter(supportFragmentManager).apply {
             addFragment(ChatsFragment.newInstance(), ChatsFragment.TITLE)
             addFragment(UsersFragment.newInstance(), UsersFragment.TITLE)
+            addFragment(ProfileFragment.newInstance(), ProfileFragment.TITLE)
         }
 
-        view_pager.adapter = viewPagerAdapter
+        binding.viewPager.adapter = viewPagerAdapter
 
-        tab_layout.setupWithViewPager(view_pager)
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
