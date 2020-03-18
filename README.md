@@ -102,3 +102,7 @@ I am learning how to make a simple chat app using Firebase.
     I have added a small amount of code that shows if the user is online or offline. A new field "status" is added to
     the realtime database which updates when the user becomes online or goes offline. An green color ImageView is 
     shown if *status == "online"* and hidden when *status == "offline"*.
+    
+- **"Day 6 Commit #2"**
+
+    Added a search feature in *UsersFragment.kt*.

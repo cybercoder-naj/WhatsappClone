@@ -13,6 +13,7 @@ import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.databinding.ActivityRegisterBinding
 import com.nishant.whatsappclone.utils.toast
 import kotlinx.android.synthetic.main.activity_register.toolbar
+import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -64,7 +65,9 @@ class RegisterActivity : AppCompatActivity() {
                     val hashMap = hashMapOf(
                         "id" to userId,
                         "username" to username,
-                        "imageURL" to "default"
+                        "imageURL" to "default",
+                        "status" to "offline",
+                        "search" to username.toLowerCase(Locale.getDefault())
                     )
 
                     reference.setValue(hashMap).addOnCompleteListener { task ->
