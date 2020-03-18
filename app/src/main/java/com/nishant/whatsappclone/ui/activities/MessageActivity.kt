@@ -26,6 +26,11 @@ class MessageActivity : AppCompatActivity() {
         fun getIntent(context: Context) = Intent(context, MessageActivity::class.java)
     }
 
+    override fun onResume() {
+        super.onResume()
+        status("online")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMessageBinding.inflate(layoutInflater)
@@ -36,7 +41,12 @@ class MessageActivity : AppCompatActivity() {
             title = ""
             setDisplayHomeAsUpEnabled(true)
         }
-        toolbar.setNavigationOnClickListener { finish() }
+        toolbar.setNavigationOnClickListener {
+            startActivity(
+                MainActivity.getIntent(this)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            )
+        }
 
         binding.recyclerViewMessages.apply {
             setHasFixedSize(true)
@@ -78,6 +88,11 @@ class MessageActivity : AppCompatActivity() {
         })
     }
 
+    override fun onPause() {
+        super.onPause()
+        status("offline")
+    }
+
     private fun sendMessage(sender: String, receiver: String, message: String) {
         reference = FirebaseDatabase.getInstance().reference
 
@@ -115,5 +130,16 @@ class MessageActivity : AppCompatActivity() {
 
             }
         })
+    }
+
+    private fun status(status: String) {
+        FirebaseDatabase
+            .getInstance()
+            .getReference("Users")
+            .updateChildren(
+                mapOf(
+                    "status" to status
+                )
+            )
     }
 }

@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    app:contentPadding="10dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="10dp">
+    app:cardElevation="10dp"
+    app:contentPadding="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,8 +16,8 @@
             android:id="@+id/display_photo"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/default_profile"
-            android:contentDescription="@string/profile_picture" />
+            android:contentDescription="@string/profile_picture"
+            android:src="@drawable/default_profile" />
 
         <TextView
             android:id="@+id/username"
@@ -28,8 +28,22 @@
             android:layout_marginLeft="10dp"
             android:layout_toEndOf="@id/display_photo"
             android:layout_toRightOf="@id/display_photo"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/image_status"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/username"
+            android:layout_marginStart="-15dp"
+            android:layout_marginLeft="-15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/display_photo"
+            android:layout_toRightOf="@id/display_photo"
+            android:src="@android:color/holo_green_light"
+            android:visibility="gone" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

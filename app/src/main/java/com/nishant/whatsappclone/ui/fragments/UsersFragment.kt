@@ -49,7 +49,7 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
                     if (user.id != firebaseUser.uid)
                         users.add(user)
 
-                    binding.recyclerViewUsers.adapter = UserAdapter(context!!, users)
+                    binding.recyclerViewUsers.adapter = UserAdapter(context!!, users, false)
                 }
             }
 

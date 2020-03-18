@@ -10,7 +10,6 @@ class ViewPagerAdapter(fragmentManager: FragmentManager) :
     private val fragments = ArrayList<Fragment>()
     private val titles = ArrayList<String>()
 
-
     override fun getItem(position: Int) = fragments[position]
 
     override fun getCount() = fragments.size

@@ -89,7 +89,7 @@ class ChatsFragment : Fragment(R.layout.fragment_chats) {
                     }
                 }
 
-                binding.recyclerViewChats.adapter = UserAdapter(context!!, users)
+                binding.recyclerViewChats.adapter = UserAdapter(context!!, users, true)
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

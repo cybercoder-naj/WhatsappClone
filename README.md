@@ -12,7 +12,7 @@ I am learning how to make a simple chat app using Firebase.
  - [x] Setup Chat Activity
  - [x] Sending and displaying messages
  - [x] User profile, changing display photo
- - [ ] User activity status
+ - [x] User activity status
  - [ ] Read receipts
  - [ ] Forget password
  - [ ] Sending Notifications
@@ -94,3 +94,11 @@ I am learning how to make a simple chat app using Firebase.
 - **"Day 5 Commit #2"**
 
     Updated README.md
+    
+### Day 6 (18/03/2020)
+
+- **"Day 6 Commit #1"**
+
+    I have added a small amount of code that shows if the user is online or offline. A new field "status" is added to
+    the realtime database which updates when the user becomes online or goes offline. An green color ImageView is 
+    shown if *status == "online"* and hidden when *status == "offline"*.

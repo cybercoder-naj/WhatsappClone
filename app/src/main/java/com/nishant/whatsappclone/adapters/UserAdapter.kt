@@ -11,7 +11,11 @@ import com.nishant.whatsappclone.models.User
 import com.nishant.whatsappclone.ui.activities.MessageActivity
 import kotlinx.android.synthetic.main.card_view_user_item.view.*
 
-class UserAdapter(private val context: Context, private val users: List<User>) :
+class UserAdapter(
+    private val context: Context,
+    private val users: List<User>,
+    private val isChat: Boolean
+) :
     RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -36,6 +40,15 @@ class UserAdapter(private val context: Context, private val users: List<User>) :
                 itemView.display_photo.setImageResource(R.drawable.default_profile)
             else
                 Glide.with(context).load(user.imageURL).into(itemView.display_photo)
+
+            itemView.image_status.visibility =
+                if (isChat)
+                    if (user.status == "online")
+                        View.VISIBLE
+                    else
+                        View.GONE
+                else
+                    View.GONE
 
             itemView.setOnClickListener {
                 context.startActivity(

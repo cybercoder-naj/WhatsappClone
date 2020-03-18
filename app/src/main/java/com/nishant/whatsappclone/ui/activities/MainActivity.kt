@@ -23,6 +23,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var reference: DatabaseReference
 
+    companion object {
+        fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        status("online")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -75,15 +84,27 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menu_item_logout -> {
                 FirebaseAuth.getInstance().signOut()
-                startActivity(StartActivity.getIntent(this))
-                finish()
+                startActivity(StartActivity.getIntent(this).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 return true
             }
         }
         return false
     }
 
-    companion object {
-        fun getIntent(context: Context) = Intent(context, MainActivity::class.java)
+    override fun onPause() {
+        super.onPause()
+        status("offline")
+    }
+
+    private fun status(status: String) {
+        FirebaseDatabase
+            .getInstance()
+            .getReference("Users")
+            .child(firebaseUser.uid)
+            .updateChildren(
+                mapOf(
+                    "status" to status
+                )
+            )
     }
 }
