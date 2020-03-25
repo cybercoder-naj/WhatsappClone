@@ -14,13 +14,14 @@ import com.nishant.whatsappclone.adapters.MessageAdapter
 import com.nishant.whatsappclone.databinding.ActivityMessageBinding
 import com.nishant.whatsappclone.models.Chat
 import com.nishant.whatsappclone.models.User
-import kotlinx.android.synthetic.main.activity_message.toolbar
+import kotlinx.android.synthetic.main.activity_message.*
 
 class MessageActivity : AppCompatActivity() {
 
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var reference: DatabaseReference
     private lateinit var binding: ActivityMessageBinding
+    private lateinit var seenListener: ValueEventListener
 
     companion object {
         fun getIntent(context: Context) = Intent(context, MessageActivity::class.java)
@@ -75,7 +76,7 @@ class MessageActivity : AppCompatActivity() {
                     if (it.imageURL == "default")
                         binding.imageProfile.setImageResource(R.drawable.default_profile)
                     else
-                        Glide.with(this@MessageActivity).load(it.imageURL).into(binding.imageProfile)
+                        Glide.with(applicationContext).load(it.imageURL).into(binding.imageProfile)
                 }
 
                 readMessage(firebaseUser.uid, userId, user?.imageURL ?: "default")
@@ -86,11 +87,37 @@ class MessageActivity : AppCompatActivity() {
             }
 
         })
+        seenMessage(userId)
     }
 
     override fun onPause() {
         super.onPause()
+        reference.removeEventListener(seenListener)
         status("offline")
+    }
+
+    private fun seenMessage(userId: String) {
+        reference = FirebaseDatabase.getInstance().getReference("Chats")
+        seenListener = reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children) {
+                    val chat = snapshot.getValue(Chat::class.java)
+                    chat?.let {
+                        if (chat.receiver == firebaseUser.uid && chat.sender == userId)
+                            snapshot.ref.updateChildren(
+                                mapOf(
+                                    "hasSeen" to true
+                                )
+                            )
+                    }
+                }
+            }
+
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
     }
 
     private fun sendMessage(sender: String, receiver: String, message: String) {
@@ -99,7 +126,8 @@ class MessageActivity : AppCompatActivity() {
         val hashMap = hashMapOf(
             "sender" to sender,
             "receiver" to receiver,
-            "message" to message
+            "message" to message,
+            "hasSeen" to false
         )
 
         reference.child("Chats").push().setValue(hashMap)

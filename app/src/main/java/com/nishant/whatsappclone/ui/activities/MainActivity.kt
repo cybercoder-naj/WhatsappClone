@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                     if (it.imageURL == "default")
                         binding.imageProfile.setImageResource(R.drawable.default_profile)
                     else
-                        Glide.with(this@MainActivity).load(it.imageURL).into(binding.imageProfile)
+                        Glide.with(applicationContext).load(it.imageURL).into(binding.imageProfile)
                 }
             }
 

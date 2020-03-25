@@ -15,4 +15,6 @@
     <string name="type_a_message">Type a message&#8230;</string>
     <string name="profile">Profile</string>
     <string name="search">Search&#8230;</string>
+    <string name="seen">Seen</string>
+    <string name="delivered">Delivered</string>
 </resources>

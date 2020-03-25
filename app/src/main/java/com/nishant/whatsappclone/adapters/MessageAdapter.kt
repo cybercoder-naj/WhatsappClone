@@ -4,13 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.nishant.whatsappclone.R
+import com.nishant.whatsappclone.databinding.CardviewChatItemRightBinding
 import com.nishant.whatsappclone.models.Chat
 
 class MessageAdapter(
@@ -29,14 +28,19 @@ class MessageAdapter(
 
     inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindData(chat: Chat) {
-            val showMessage = itemView.findViewById<TextView>(R.id.show_message)
-            val imageProfile = itemView.findViewById<ImageView>(R.id.image_profile)
-            showMessage.text = chat.message
+            val binding = CardviewChatItemRightBinding.bind(itemView)
+            binding.showMessage.text = chat.message
 
             if (imageURL == "default")
-                imageProfile.setImageResource(R.drawable.default_profile)
+                binding.imageProfile.setImageResource(R.drawable.default_profile)
             else
-                Glide.with(context).load(imageURL).into(imageProfile)
+                Glide.with(context).load(imageURL).into(binding.imageProfile)
+
+            if (adapterPosition == chats.size - 1)
+                binding.textSeen.text =
+                    context.resources.getString(if (chat.hasSeen) R.string.seen else R.string.delivered)
+            else
+                binding.textSeen.visibility = View.GONE
         }
 
     }

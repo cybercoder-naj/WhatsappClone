@@ -13,7 +13,7 @@ I am learning how to make a simple chat app using Firebase.
  - [x] Sending and displaying messages
  - [x] User profile, changing display photo
  - [x] User activity status
- - [ ] Read receipts
+ - [x] Read receipts
  - [ ] Forget password
  - [ ] Sending Notifications
 
@@ -106,3 +106,10 @@ I am learning how to make a simple chat app using Firebase.
 - **"Day 6 Commit #2"**
 
     Added a search feature in *UsersFragment.kt*.
+    
+### Day 7 (25/03/2020)
+
+- **"Day 7 Commit #1"**
+
+    Now the user can see if the user has seen the message or not. A new field, *hasSeen* has been added to the realtime
+    database which is read by the *MessageAdapter.kt*
