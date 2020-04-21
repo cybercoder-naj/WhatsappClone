@@ -126,3 +126,7 @@ I am learning how to make a simple chat app using Firebase.
 
     I have improved the performance of the app. Instead of searching through each and every chat, there is another field *Chatlist* which
     has the id of the user one has at least 1 chat with.
+    
+- **"Day 8 Commit #3"**
+
+    I have added the feature in which the user can see the last message sent or received while talking to the user in the Chat's tab.
