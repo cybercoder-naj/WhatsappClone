@@ -14,7 +14,7 @@ I am learning how to make a simple chat app using Firebase.
  - [x] User profile, changing display photo
  - [x] User activity status
  - [x] Read receipts
- - [ ] Forget password
+ - [x] Forget password
  - [ ] Sending Notifications
 
 ## Log  
@@ -113,3 +113,11 @@ I am learning how to make a simple chat app using Firebase.
 
     Now the user can see if the user has seen the message or not. A new field, *hasSeen* has been added to the realtime
     database which is read by the *MessageAdapter.kt*
+    
+### Day 8 (21/04/2020)
+
+- **"Day 8 Commit #1"**
+
+    It has almost been a month since I have updated this project. Today, I have added the functionality of Reset Password where 
+    a password will be sent to the email ID of the user with a link. This link will redirect him/her to a firebase web page where their
+    password can be reset.

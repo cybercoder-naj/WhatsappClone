@@ -12,7 +12,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.nishant.whatsappclone.R
 import com.nishant.whatsappclone.databinding.ActivityRegisterBinding
 import com.nishant.whatsappclone.utils.toast
-import kotlinx.android.synthetic.main.activity_register.toolbar
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -28,7 +27,7 @@ class RegisterActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        setSupportActionBar(toolbar as Toolbar?)
+        setSupportActionBar(binding.toolbar.toolbar as Toolbar?)
         supportActionBar?.apply {
             title = resources.getString(R.string.login)
             setDisplayHomeAsUpEnabled(true)

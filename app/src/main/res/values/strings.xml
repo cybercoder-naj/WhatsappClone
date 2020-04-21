@@ -17,4 +17,8 @@
     <string name="search">Search&#8230;</string>
     <string name="seen">Seen</string>
     <string name="delivered">Delivered</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="reset">Reset</string>
+    <string name="reset_password_message">By clicking this button,\nyou will receive an email to reset your password.</string>
 </resources>
