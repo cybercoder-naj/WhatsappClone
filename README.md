@@ -121,3 +121,8 @@ I am learning how to make a simple chat app using Firebase.
     It has almost been a month since I have updated this project. Today, I have added the functionality of Reset Password where 
     a password will be sent to the email ID of the user with a link. This link will redirect him/her to a firebase web page where their
     password can be reset.
+    
+- **"Day 8 Commit #2"**
+
+    I have improved the performance of the app. Instead of searching through each and every chat, there is another field *Chatlist* which
+    has the id of the user one has at least 1 chat with.

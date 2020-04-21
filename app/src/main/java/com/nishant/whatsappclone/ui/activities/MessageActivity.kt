@@ -22,6 +22,7 @@ class MessageActivity : AppCompatActivity() {
     private lateinit var reference: DatabaseReference
     private lateinit var binding: ActivityMessageBinding
     private lateinit var seenListener: ValueEventListener
+    private lateinit var userId: String
 
     companion object {
         fun getIntent(context: Context) = Intent(context, MessageActivity::class.java)
@@ -57,7 +58,7 @@ class MessageActivity : AppCompatActivity() {
         }
 
         firebaseUser = FirebaseAuth.getInstance().currentUser!!
-        val userId = intent?.getStringExtra(resources.getString(R.string.intent_key_userid)) ?: ""
+        userId = intent?.getStringExtra(resources.getString(R.string.intent_key_userid)) ?: ""
         reference = FirebaseDatabase.getInstance().getReference("Users")
             .child(userId)
 
@@ -131,6 +132,22 @@ class MessageActivity : AppCompatActivity() {
         )
 
         reference.child("Chats").push().setValue(hashMap)
+
+        FirebaseDatabase.getInstance().getReference("Chatlist")
+            .child(firebaseUser.uid)
+            .child(userId).apply {
+                addListenerForSingleValueEvent(object: ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        if(!dataSnapshot.exists())
+                            child("id").setValue(userId)
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+
+                    }
+
+                })
+            }
     }
 
     private fun readMessage(myId: String, userId: String, imageURL: String) {
